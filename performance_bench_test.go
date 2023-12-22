@@ -24,9 +24,11 @@ var (
 	datas  []data
 
 	clients = []client.Client[string, string]{
-		&client.Otter[string, string]{},
 		&client.Theine[string, string]{},
 		&client.Ristretto[string, string]{},
+		&client.Bigcache{},
+		&client.Fastcache{},
+		&client.Otter[string, string]{},
 	}
 )
 
@@ -57,11 +59,11 @@ type benchCase struct {
 }
 
 var benchCases = []benchCase{
-	{"reads=100%,writes=0%", 100, 0},
-	{"reads=75%,writes=25%", 75, 25},
-	{"reads=50%,writes=50%", 50, 45},
-	{"reads=25%,writes=75%", 25, 75},
-	{"reads=0%,writes=100%", 0, 100},
+	//{"reads=100%,writes=0%", 100, 0},
+	//{"reads=75%,writes=25%", 75, 25},
+	{"reads=50%,writes=50%", 50, 50},
+	//{"reads=25%,writes=75%", 25, 75},
+	//{"reads=0%,writes=100%", 0, 100},
 }
 
 type data struct {
@@ -88,8 +90,10 @@ func newZipfData() data {
 
 func runParallelBenchmark(b *testing.B, benchFunc func(pb *testing.PB)) {
 	b.ResetTimer()
-	b.ReportAllocs()
+	start := time.Now()
 	b.RunParallel(benchFunc)
+	opsPerSec := float64(b.N) / float64(time.Since(start).Seconds())
+	b.ReportMetric(opsPerSec, "ops/s")
 }
 
 func runCacheBenchmark(
@@ -104,18 +108,20 @@ func runCacheBenchmark(
 		c.Set(keys[i], values[i])
 	}
 
-	b.ReportAllocs()
 	runParallelBenchmark(b, func(pb *testing.PB) {
 		// convert percent to permille
 		setThreshold := 10 * benchCase.readPercentage
+		counter := fastrand() % dataLength
 		for pb.Next() {
 			op := int(fastrand() % 1000)
-			i := int(fastrand() % uint32(dataLength))
+			//i := int(fastrand() % uint32(dataLength))
+			i := counter % dataLength
 			if op >= setThreshold {
 				c.Set(keys[i], values[i])
 			} else {
 				c.Get(keys[i])
 			}
+			counter++
 		}
 	})
 }
@@ -128,6 +134,7 @@ func BenchmarkCache(b *testing.B) {
 				b.Run(name, func(b *testing.B) {
 					runCacheBenchmark(b, benchCase, data.keys, c)
 				})
+				c.Close()
 			}
 		}
 	}

@@ -1,407 +1,343 @@
 Zipf:
         Capacity: 500
-                Optimal ratio: 25.73
-                Otter ratio: 17.57
-                Theine ratio: 23.45
-                Ristretto ratio: 2.86
-                LRU ratio: 12.19
+                Otter ratio: 24.31
+                Theine ratio: 23.47
+                Ristretto ratio: 2.94
+                LRU ratio: 12.17
                 ARC ratio: 24.22
         Capacity: 1000
-                Optimal ratio: 30.09
-                Otter ratio: 20.99
-                Theine ratio: 27.67
-                Ristretto ratio: 4.63
-                LRU ratio: 16.91
-                ARC ratio: 28.56
+                Otter ratio: 28.56
+                Theine ratio: 27.52
+                Ristretto ratio: 4.62
+                LRU ratio: 16.93
+                ARC ratio: 28.59
         Capacity: 2000
-                Optimal ratio: 34.57
-                Otter ratio: 24.97
-                Theine ratio: 31.64
-                Ristretto ratio: 6.74
-                LRU ratio: 21.70
-                ARC ratio: 32.88
+                Otter ratio: 32.55
+                Theine ratio: 31.74
+                Ristretto ratio: 6.73
+                LRU ratio: 21.68
+                ARC ratio: 32.87
         Capacity: 5000
-                Optimal ratio: 40.38
-                Otter ratio: 31.20
-                Theine ratio: 36.59
-                Ristretto ratio: 9.36
-                LRU ratio: 28.06
-                ARC ratio: 38.22
+                Otter ratio: 37.70
+                Theine ratio: 36.60
+                Ristretto ratio: 9.46
+                LRU ratio: 28.10
+                ARC ratio: 38.20
         Capacity: 10000
-                Optimal ratio: 44.63
-                Otter ratio: 36.41
-                Theine ratio: 39.90
-                Ristretto ratio: 11.82
-                LRU ratio: 32.92
-                ARC ratio: 41.70
+                Otter ratio: 41.09
+                Theine ratio: 39.97
+                Ristretto ratio: 11.93
+                LRU ratio: 32.83
+                ARC ratio: 41.88
         Capacity: 20000
-                Optimal ratio: 48.74
-                Otter ratio: 41.20
-                Theine ratio: 42.83
-                Ristretto ratio: 15.66
-                LRU ratio: 37.74
-                ARC ratio: 44.89
+                Otter ratio: 43.87
+                Theine ratio: 43.03
+                Ristretto ratio: 15.47
+                LRU ratio: 37.72
+                ARC ratio: 44.87
         Capacity: 40000
-                Optimal ratio: 52.04
-                Otter ratio: 44.85
+                Otter ratio: 46.40
                 Theine ratio: 45.63
-                Ristretto ratio: 20.40
-                LRU ratio: 42.54
-                ARC ratio: 47.54
+                Ristretto ratio: 20.17
+                LRU ratio: 42.51
+                ARC ratio: 47.42
         Capacity: 80000
-                Optimal ratio: 54.23
-                Otter ratio: 48.37
-                Theine ratio: 48.31
-                Ristretto ratio: 25.78
-                LRU ratio: 47.02
-                ARC ratio: 49.84
-
+                Otter ratio: 48.75
+                Theine ratio: 48.28
+                Ristretto ratio: 25.64
+                LRU ratio: 47.00
+                ARC ratio: 49.85
 S3:
         Capacity: 100000
-                Optimal ratio: 16.72
-                Otter ratio: 2.38
+                Otter ratio: 11.37
                 Theine ratio: 10.10
-                Ristretto ratio: 0.12
+                Ristretto ratio: 0.13
                 LRU ratio: 2.33
                 ARC ratio: 12.82
         Capacity: 200000
-                Optimal ratio: 28.79
-                Otter ratio: 5.52
-                Theine ratio: 18.94
+                Otter ratio: 20.47
+                Theine ratio: 18.95
                 Ristretto ratio: 0.37
                 LRU ratio: 4.63
                 ARC ratio: 22.92
         Capacity: 300000
-                Optimal ratio: 39.45
-                Otter ratio: 11.90
-                Theine ratio: 28.01
+                Otter ratio: 27.75
+                Theine ratio: 28.06
                 Ristretto ratio: 0.62
                 LRU ratio: 7.59
                 ARC ratio: 29.38
         Capacity: 400000
-                Optimal ratio: 48.97
-                Otter ratio: 41.73
-                Theine ratio: 36.63
+                Otter ratio: 32.61
+                Theine ratio: 38.48
                 Ristretto ratio: 0.79
                 LRU ratio: 12.04
                 ARC ratio: 32.46
         Capacity: 500000
-                Optimal ratio: 57.37
-                Otter ratio: 55.69
-                Theine ratio: 44.53
+                Otter ratio: 39.46
+                Theine ratio: 44.43
                 Ristretto ratio: 1.08
                 LRU ratio: 22.77
                 ARC ratio: 38.44
         Capacity: 600000
-                Optimal ratio: 64.61
-                Otter ratio: 64.18
-                Theine ratio: 53.21
-                Ristretto ratio: 1.29
+                Otter ratio: 46.64
+                Theine ratio: 53.29
+                Ristretto ratio: 1.30
                 LRU ratio: 34.63
                 ARC ratio: 47.02
         Capacity: 700000
-                Optimal ratio: 70.62
-                Otter ratio: 71.31
-                Theine ratio: 60.54
+                Otter ratio: 54.01
+                Theine ratio: 60.59
                 Ristretto ratio: 1.47
                 LRU ratio: 46.04
                 ARC ratio: 56.36
         Capacity: 800000
-                Optimal ratio: 75.64
-                Otter ratio: 76.81
-                Theine ratio: 67.37
-                Ristretto ratio: 1.67
+                Otter ratio: 61.99
+                Theine ratio: 67.34
+                Ristretto ratio: 1.69
                 LRU ratio: 56.60
                 ARC ratio: 64.47
-
 DS1:
         Capacity: 1000000
-                Optimal ratio: 18.83
-                Otter ratio: 3.31
-                Theine ratio: 13.93
-                Ristretto ratio: 0.58
+                Otter ratio: 12.13
+                Theine ratio: 13.99
+                Ristretto ratio: 0.62
                 LRU ratio: 3.09
                 ARC ratio: 9.65
         Capacity: 2000000
-                Optimal ratio: 30.98
-                Otter ratio: 13.92
-                Theine ratio: 25.66
+                Otter ratio: 22.39
+                Theine ratio: 25.58
                 Ristretto ratio: 0.76
                 LRU ratio: 10.74
                 ARC ratio: 21.26
         Capacity: 3000000
-                Optimal ratio: 40.81
-                Otter ratio: 23.87
+                Otter ratio: 23.47
                 Theine ratio: 38.80
-                Ristretto ratio: 0.96
+                Ristretto ratio: 0.95
                 LRU ratio: 18.59
                 ARC ratio: 24.16
         Capacity: 4000000
-                Optimal ratio: 47.68
-                Otter ratio: 24.92
-                Theine ratio: 43.68
+                Otter ratio: 24.50
+                Theine ratio: 43.70
                 Ristretto ratio: 1.18
                 LRU ratio: 20.24
                 ARC ratio: 24.30
         Capacity: 5000000
-                Optimal ratio: 54.54
-                Otter ratio: 45.66
-                Theine ratio: 50.55
-                Ristretto ratio: 1.49
+                Otter ratio: 30.07
+                Theine ratio: 50.56
+                Ristretto ratio: 1.41
                 LRU ratio: 21.03
                 ARC ratio: 29.27
         Capacity: 6000000
-                Optimal ratio: 61.40
-                Otter ratio: 58.80
+                Otter ratio: 40.95
                 Theine ratio: 58.30
-                Ristretto ratio: 1.54
+                Ristretto ratio: 1.68
                 LRU ratio: 33.95
                 ARC ratio: 38.94
         Capacity: 7000000
-                Optimal ratio: 68.27
-                Otter ratio: 51.26
-                Theine ratio: 65.07
-                Ristretto ratio: 1.93
+                Otter ratio: 48.16
+                Theine ratio: 65.06
+                Ristretto ratio: 1.75
                 LRU ratio: 38.90
                 ARC ratio: 49.47
         Capacity: 8000000
-                Optimal ratio: 74.24
-                Otter ratio: 72.31
+                Otter ratio: 50.00
                 Theine ratio: 70.68
-                Ristretto ratio: 1.99
+                Ristretto ratio: 2.14
                 LRU ratio: 43.03
                 ARC ratio: 52.12
-
 P3:
         Capacity: 25000
-                Optimal ratio: 18.75
-                Otter ratio: 2.85
-                Theine ratio: 11.01
+                Otter ratio: 13.06
+                Theine ratio: 11.35
                 Ristretto ratio: 0.46
                 LRU ratio: 2.60
                 ARC ratio: 13.33
         Capacity: 50000
-                Optimal ratio: 30.91
-                Otter ratio: 12.48
-                Theine ratio: 19.51
-                Ristretto ratio: 0.83
+                Otter ratio: 24.42
+                Theine ratio: 20.60
+                Ristretto ratio: 0.81
                 LRU ratio: 6.86
                 ARC ratio: 22.23
         Capacity: 100000
-                Optimal ratio: 45.14
-                Otter ratio: 54.73
-                Theine ratio: 36.99
-                Ristretto ratio: 1.49
+                Otter ratio: 41.28
+                Theine ratio: 37.44
+                Ristretto ratio: 1.50
                 LRU ratio: 29.34
                 ARC ratio: 40.67
         Capacity: 200000
-                Optimal ratio: 63.06
-                Otter ratio: 69.55
-                Theine ratio: 54.63
-                Ristretto ratio: 2.64
+                Otter ratio: 60.87
+                Theine ratio: 54.02
+                Ristretto ratio: 2.67
                 LRU ratio: 59.35
                 ARC ratio: 59.91
         Capacity: 300000
-                Optimal ratio: 74.29
-                Otter ratio: 76.93
-                Theine ratio: 68.75
-                Ristretto ratio: 3.90
+                Otter ratio: 67.57
+                Theine ratio: 68.89
+                Ristretto ratio: 3.92
                 LRU ratio: 68.93
                 ARC ratio: 67.84
         Capacity: 400000
-                Optimal ratio: 79.24
-                Otter ratio: 79.30
-                Theine ratio: 76.18
-                Ristretto ratio: 5.10
+                Otter ratio: 76.61
+                Theine ratio: 76.25
+                Ristretto ratio: 4.99
                 LRU ratio: 75.30
                 ARC ratio: 77.19
         Capacity: 500000
-                Optimal ratio: 80.51
-                Otter ratio: 80.47
-                Theine ratio: 79.02
-                Ristretto ratio: 6.09
+                Otter ratio: 77.82
+                Theine ratio: 79.03
+                Ristretto ratio: 6.17
                 LRU ratio: 79.46
                 ARC ratio: 79.49
         Capacity: 600000
-                Optimal ratio: 80.51
-                Otter ratio: 80.51
+                Otter ratio: 79.87
                 Theine ratio: 80.00
-                Ristretto ratio: 7.09
+                Ristretto ratio: 7.10
                 LRU ratio: 80.16
                 ARC ratio: 79.97
-
 P8:
         Capacity: 10000
-                Optimal ratio: 15.46
-                Otter ratio: 13.14
-                Theine ratio: 10.70
-                Ristretto ratio: 0.26
+                Otter ratio: 12.10
+                Theine ratio: 10.52
+                Ristretto ratio: 0.25
                 LRU ratio: 3.34
                 ARC ratio: 10.17
         Capacity: 20000
-                Optimal ratio: 25.53
-                Otter ratio: 26.93
-                Theine ratio: 19.91
-                Ristretto ratio: 0.58
+                Otter ratio: 20.86
+                Theine ratio: 20.06
+                Ristretto ratio: 0.57
                 LRU ratio: 9.48
                 ARC ratio: 18.53
         Capacity: 30000
-                Optimal ratio: 33.27
-                Otter ratio: 36.75
-                Theine ratio: 27.05
+                Otter ratio: 27.84
+                Theine ratio: 27.16
                 Ristretto ratio: 0.93
                 LRU ratio: 15.49
                 ARC ratio: 25.04
         Capacity: 40000
-                Optimal ratio: 39.55
-                Otter ratio: 44.54
-                Theine ratio: 33.50
+                Otter ratio: 33.90
+                Theine ratio: 33.39
                 Ristretto ratio: 1.19
                 LRU ratio: 21.63
                 ARC ratio: 30.66
         Capacity: 50000
-                Optimal ratio: 44.73
-                Otter ratio: 51.22
-                Theine ratio: 39.36
+                Otter ratio: 39.11
+                Theine ratio: 39.34
                 Ristretto ratio: 1.42
                 LRU ratio: 27.51
                 ARC ratio: 35.55
         Capacity: 60000
-                Optimal ratio: 48.94
-                Otter ratio: 56.63
-                Theine ratio: 44.08
-                Ristretto ratio: 1.77
+                Otter ratio: 44.08
+                Theine ratio: 44.26
+                Ristretto ratio: 1.75
                 LRU ratio: 33.13
                 ARC ratio: 40.31
         Capacity: 70000
-                Optimal ratio: 52.89
-                Otter ratio: 61.41
-                Theine ratio: 48.77
-                Ristretto ratio: 1.98
+                Otter ratio: 48.39
+                Theine ratio: 48.73
+                Ristretto ratio: 2.00
                 LRU ratio: 38.75
                 ARC ratio: 44.56
         Capacity: 80000
-                Optimal ratio: 56.40
-                Otter ratio: 65.56
-                Theine ratio: 53.09
-                Ristretto ratio: 2.17
+                Otter ratio: 52.33
+                Theine ratio: 53.13
+                Ristretto ratio: 2.15
                 LRU ratio: 43.45
                 ARC ratio: 47.93
-
 LOOP:
         Capacity: 250
-                Optimal ratio: 24.48
-                Otter ratio: 1.39
-                Theine ratio: 20.30
-                Ristretto ratio: 0.33
+                Otter ratio: 0.00
+                Theine ratio: 19.84
+                Ristretto ratio: 0.30
                 LRU ratio: 0.00
                 ARC ratio: 0.00
         Capacity: 500
-                Optimal ratio: 49.16
-                Otter ratio: 2.01
-                Theine ratio: 44.77
-                Ristretto ratio: 0.63
+                Otter ratio: 42.81
+                Theine ratio: 44.34
+                Ristretto ratio: 0.45
                 LRU ratio: 0.00
                 ARC ratio: 0.00
         Capacity: 750
-                Optimal ratio: 73.84
-                Otter ratio: 86.93
-                Theine ratio: 73.19
-                Ristretto ratio: 1.00
+                Otter ratio: 71.23
+                Theine ratio: 73.32
+                Ristretto ratio: 1.13
                 LRU ratio: 0.00
                 ARC ratio: 0.07
         Capacity: 1000
-                Optimal ratio: 98.52
                 Otter ratio: 99.80
-                Theine ratio: 98.65
-                Ristretto ratio: 1.56
+                Theine ratio: 98.24
+                Ristretto ratio: 1.52
                 LRU ratio: 0.00
                 ARC ratio: 0.10
         Capacity: 1250
-                Optimal ratio: 99.80
                 Otter ratio: 99.80
                 Theine ratio: 99.80
-                Ristretto ratio: 1.98
+                Ristretto ratio: 1.99
                 LRU ratio: 99.80
                 ARC ratio: 99.80
         Capacity: 1500
-                Optimal ratio: 99.80
                 Otter ratio: 99.80
                 Theine ratio: 99.80
-                Ristretto ratio: 2.54
+                Ristretto ratio: 2.35
                 LRU ratio: 99.80
                 ARC ratio: 99.80
         Capacity: 1750
-                Optimal ratio: 99.80
                 Otter ratio: 99.80
                 Theine ratio: 99.80
-                Ristretto ratio: 2.54
+                Ristretto ratio: 2.69
                 LRU ratio: 99.80
                 ARC ratio: 99.80
         Capacity: 2000
-                Optimal ratio: 99.80
                 Otter ratio: 99.80
                 Theine ratio: 99.80
-                Ristretto ratio: 2.93
+                Ristretto ratio: 2.88
                 LRU ratio: 99.80
                 ARC ratio: 99.80
-
 OLTP:
         Capacity: 250
-                Optimal ratio: 20.10
-                Otter ratio: 25.56
-                Theine ratio: 19.46
-                Ristretto ratio: 1.26
+                Otter ratio: 28.46
+                Theine ratio: 19.61
+                Ristretto ratio: 1.25
                 LRU ratio: 16.47
                 ARC ratio: 21.47
         Capacity: 500
-                Optimal ratio: 26.40
-                Otter ratio: 32.99
-                Theine ratio: 28.23
-                Ristretto ratio: 2.27
+                Otter ratio: 35.71
+                Theine ratio: 28.76
+                Ristretto ratio: 2.24
                 LRU ratio: 23.45
                 ARC ratio: 30.85
         Capacity: 750
-                Optimal ratio: 30.18
-                Otter ratio: 37.59
-                Theine ratio: 33.60
-                Ristretto ratio: 3.25
+                Otter ratio: 39.33
+                Theine ratio: 33.41
+                Ristretto ratio: 3.23
                 LRU ratio: 28.28
                 ARC ratio: 36.07
         Capacity: 1000
-                Optimal ratio: 33.26
-                Otter ratio: 40.98
-                Theine ratio: 36.14
-                Ristretto ratio: 4.02
+                Otter ratio: 41.71
+                Theine ratio: 36.28
+                Ristretto ratio: 4.07
                 LRU ratio: 32.83
                 ARC ratio: 39.12
         Capacity: 1250
-                Optimal ratio: 35.14
-                Otter ratio: 43.36
-                Theine ratio: 39.19
-                Ristretto ratio: 4.59
+                Otter ratio: 43.50
+                Theine ratio: 39.25
+                Ristretto ratio: 4.55
                 LRU ratio: 36.21
                 ARC ratio: 41.37
         Capacity: 1500
-                Optimal ratio: 36.49
-                Otter ratio: 45.47
-                Theine ratio: 40.87
-                Ristretto ratio: 4.92
+                Otter ratio: 44.97
+                Theine ratio: 40.85
+                Ristretto ratio: 5.00
                 LRU ratio: 38.70
                 ARC ratio: 43.21
         Capacity: 1750
-                Optimal ratio: 37.71
-                Otter ratio: 47.23
-                Theine ratio: 42.70
-                Ristretto ratio: 5.63
+                Otter ratio: 46.18
+                Theine ratio: 42.80
+                Ristretto ratio: 5.51
                 LRU ratio: 40.79
                 ARC ratio: 44.87
         Capacity: 2000
-                Optimal ratio: 39.18
-                Otter ratio: 48.65
-                Theine ratio: 44.09
-                Ristretto ratio: 6.17
+                Otter ratio: 47.24
+                Theine ratio: 42.62
+                Ristretto ratio: 5.72
                 LRU ratio: 42.47
                 ARC ratio: 46.15
-
-

@@ -42,7 +42,7 @@ func runBench(name string, caps []int) {
 	fmt.Printf("%s:\n", name)
 	for _, capacity := range caps {
 		fmt.Printf("\tCapacity: %d\n", capacity)
-		benches := []bench{newBenchOptimal(capacity)}
+		benches := []bench{ /*newBenchOptimal(capacity)*/ }
 		for _, c := range benchClients {
 			c.Init(capacity)
 			benches = append(benches, newBenchClient(c))
@@ -78,11 +78,11 @@ func runBench(name string, caps []int) {
 }
 
 func main() {
-	// runBench("Zipf", []int{500, 1000, 2000, 5000, 10000, 20000, 40000, 80000})
-	// runBench("S3", []int{100_000, 200_000, 300_000, 400_000, 500_000, 600_000, 700_000, 800_000})
-	// runBench("DS1", []int{1_000_000, 2_000_000, 3_000_000, 4_000_000, 5_000_000, 6_000_000, 7_000_000, 8_000_000})
-	// runBench("P3", []int{25_000, 50_000, 100_000, 200_000, 300_000, 400_000, 500_000, 600_000})
-	// runBench("P8", []int{10_000, 20_000, 30_000, 40_000, 50_000, 60_000, 70_000, 80_000})
-	// runBench("LOOP", []int{250, 500, 750, 1000, 1250, 1500, 1750, 2000})
+	runBench("Zipf", []int{500, 1000, 2000, 5000, 10000, 20000, 40000, 80000})
+	runBench("S3", []int{100_000, 200_000, 300_000, 400_000, 500_000, 600_000, 700_000, 800_000})
+	runBench("DS1", []int{1_000_000, 2_000_000, 3_000_000, 4_000_000, 5_000_000, 6_000_000, 7_000_000, 8_000_000})
+	runBench("P3", []int{25_000, 50_000, 100_000, 200_000, 300_000, 400_000, 500_000, 600_000})
+	runBench("P8", []int{10_000, 20_000, 30_000, 40_000, 50_000, 60_000, 70_000, 80_000})
+	runBench("LOOP", []int{250, 500, 750, 1000, 1250, 1500, 1750, 2000})
 	runBench("OLTP", []int{250, 500, 750, 1000, 1250, 1500, 1750, 2000})
 }

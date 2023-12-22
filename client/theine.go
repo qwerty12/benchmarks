@@ -30,4 +30,5 @@ func (c *Theine[K, V]) Set(key K, value V) {
 
 func (c *Theine[K, V]) Close() {
 	c.client.Close()
+	c.client = nil
 }

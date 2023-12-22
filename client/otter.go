@@ -30,4 +30,5 @@ func (c *Otter[K, V]) Set(key K, value V) {
 
 func (c *Otter[K, V]) Close() {
 	c.client.Close()
+	c.client = nil
 }

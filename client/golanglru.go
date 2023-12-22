@@ -30,6 +30,7 @@ func (c *LRU[K, V]) Name() string {
 }
 
 func (c *LRU[K, V]) Close() {
+	c.client = nil
 }
 
 type ARC[K comparable, V any] struct {
@@ -57,4 +58,5 @@ func (c *ARC[K, V]) Name() string {
 }
 
 func (c *ARC[K, V]) Close() {
+	c.client = nil
 }

@@ -39,4 +39,5 @@ func (c *Ristretto[K, V]) Set(key K, value V) {
 
 func (c *Ristretto[K, V]) Close() {
 	c.client.Close()
+	c.client = nil
 }

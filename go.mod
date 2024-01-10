@@ -6,10 +6,13 @@ require (
 	github.com/VictoriaMetrics/fastcache v1.12.2
 	github.com/Yiling-J/theine-go v0.3.1
 	github.com/allegro/bigcache v1.2.1
+	github.com/cloudflare/golibs v0.0.0-20210909181612-21743d7dd02a
 	github.com/dgraph-io/ristretto v0.1.1
 	github.com/hashicorp/golang-lru/arc/v2 v2.0.7
 	github.com/hashicorp/golang-lru/v2 v2.0.7
-	github.com/maypok86/otter v0.0.0-20231217190419-981122ba0f89
+	github.com/maypok86/otter v0.0.0-20240110190710-aa5896c1cc1f
+	github.com/orca-zhang/ecache v1.1.1
+	github.com/phuslu/lru v0.0.0-20240106105450-9fdd928b0ffc
 	github.com/pingcap/go-ycsb v1.0.1
 	github.com/scalalang2/golang-fifo/v2 v2.0.0-20231212012136-274aca942e14
 )

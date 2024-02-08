@@ -27,8 +27,7 @@ var (
 	clients = []client.Client[string, string]{
 		&client.Theine[string, string]{},
 		&client.Ristretto[string, string]{},
-		&client.Bigcache{},
-		&client.Fastcache{},
+		&client.Ccache[string]{},
 		&client.Otter[string, string]{},
 	}
 )

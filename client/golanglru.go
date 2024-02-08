@@ -26,7 +26,7 @@ func (c *LRU[K, V]) Set(key K, value V) {
 }
 
 func (c *LRU[K, V]) Name() string {
-	return "LRU"
+	return "lru"
 }
 
 func (c *LRU[K, V]) Close() {
@@ -54,7 +54,7 @@ func (c *ARC[K, V]) Set(key K, value V) {
 }
 
 func (c *ARC[K, V]) Name() string {
-	return "ARC"
+	return "arc"
 }
 
 func (c *ARC[K, V]) Close() {

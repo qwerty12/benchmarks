@@ -70,7 +70,7 @@ func runBench(name string, caps []int) {
 				b.Set(fmt.Sprintf("%d", k))
 			}
 
-			fmt.Printf("\t\t%s ratio: %0.2f\n", b.Name(), b.Ratio())
+			fmt.Printf("\t\t%s simulator: %0.2f\n", b.Name(), b.Ratio())
 			b.Close()
 		}
 	}

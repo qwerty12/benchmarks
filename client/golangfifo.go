@@ -20,7 +20,7 @@ func (c *FIFO[K, V]) Set(key K, value V) {
 }
 
 func (c *FIFO[K, V]) Name() string {
-	return "S3FIFO"
+	return "s3-fifo"
 }
 
 func (c *FIFO[K, V]) Close() {

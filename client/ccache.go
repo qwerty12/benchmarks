@@ -1,9 +1,10 @@
 package client
 
 import (
-	"github.com/karlseguin/ccache/v3"
 	"runtime"
 	"time"
+
+	"github.com/karlseguin/ccache/v3"
 )
 
 type Ccache[V any] struct {
@@ -20,7 +21,7 @@ func (c *Ccache[V]) Init(cap int) {
 }
 
 func (c *Ccache[V]) Name() string {
-	return "Ccache"
+	return "ccache"
 }
 
 func (c *Ccache[V]) Get(key string) (V, bool) {

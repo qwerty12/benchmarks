@@ -21,7 +21,7 @@ func (c *Ristretto[K, V]) Init(cap int) {
 }
 
 func (c *Ristretto[K, V]) Name() string {
-	return "Ristretto"
+	return "ristretto"
 }
 
 func (c *Ristretto[K, V]) Get(key K) (V, bool) {

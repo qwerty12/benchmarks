@@ -25,10 +25,10 @@ var (
 	datas  []data
 
 	clients = []client.Client[string, string]{
+		&client.Otter[string, string]{},
 		&client.Theine[string, string]{},
 		&client.Ristretto[string, string]{},
 		&client.Ccache[string]{},
-		&client.Otter[string, string]{},
 	}
 )
 

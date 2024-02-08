@@ -17,7 +17,7 @@ func (c *Otter[K, V]) Init(cap int) {
 }
 
 func (c *Otter[K, V]) Name() string {
-	return "Otter"
+	return "otter"
 }
 
 func (c *Otter[K, V]) Get(key K) (V, bool) {

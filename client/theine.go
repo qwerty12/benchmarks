@@ -17,7 +17,7 @@ func (c *Theine[K, V]) Init(cap int) {
 }
 
 func (c *Theine[K, V]) Name() string {
-	return "Theine"
+	return "theine"
 }
 
 func (c *Theine[K, V]) Get(key K) (V, bool) {

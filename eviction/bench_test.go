@@ -14,16 +14,14 @@ import (
 //go:linkname fastrand runtime.fastrand
 func fastrand() uint32
 
-var (
-	clients = []client.Client[int, struct{}]{
-		&client.Theine[int, struct{}]{},
-		&client.Ristretto[int, struct{}]{},
-		&client.LRU[int, struct{}]{},
-		&client.ARC[int, struct{}]{},
-		&client.FIFO[int, struct{}]{},
-		&client.Otter[int, struct{}]{},
-	}
-)
+var clients = []client.Client[int, struct{}]{
+	&client.Theine[int, struct{}]{},
+	&client.Ristretto[int, struct{}]{},
+	&client.LRU[int, struct{}]{},
+	&client.ARC[int, struct{}]{},
+	&client.FIFO[int, struct{}]{},
+	&client.Otter[int, struct{}]{},
+}
 
 type benchCase struct {
 	name      string

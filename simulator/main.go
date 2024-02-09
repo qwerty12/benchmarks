@@ -3,11 +3,24 @@ package main
 import (
 	"fmt"
 	"math"
+	"os"
+	"path/filepath"
 	"runtime"
+	"strconv"
 	"strings"
+
+	"github.com/go-echarts/go-echarts/v2/charts"
+	"github.com/go-echarts/go-echarts/v2/opts"
+	"github.com/go-echarts/snapshot-chromedp/render"
+	"github.com/olekukonko/tablewriter"
 
 	"github.com/maypok86/benchmarks/client"
 )
+
+type ratioResult struct {
+	capacity int
+	ratio    float64
+}
 
 func getGeneratorByName(name string) generator {
 	switch strings.ToLower(name) {
@@ -31,7 +44,16 @@ func getGeneratorByName(name string) generator {
 }
 
 func runBench(name string, caps []int) {
-	benchClients := []client.Client[string, string]{
+	dir := "results"
+	imagePath := filepath.Join(dir, fmt.Sprintf("%s.png", strings.ToLower(name)))
+	if _, err := os.Stat(imagePath); err == nil {
+		fmt.Printf("Cached results on %s trace. See %s.\n", name, imagePath)
+		return
+	}
+
+	fmt.Printf("\nStarted hit ratio simulation on %s trace.\n\n", name)
+
+	clients := []client.Client[string, string]{
 		&client.Otter[string, string]{},
 		&client.Theine[string, string]{},
 		&client.Ristretto[string, string]{},
@@ -39,14 +61,20 @@ func runBench(name string, caps []int) {
 		&client.ARC[string, string]{},
 	}
 
-	fmt.Printf("%s:\n", name)
+	var cacheNames []string
+	for _, c := range clients {
+		cacheNames = append(cacheNames, c.Name())
+	}
+
+	cacheToResults := make(map[string][]ratioResult)
 	for _, capacity := range caps {
-		fmt.Printf("\tCapacity: %d\n", capacity)
 		benches := []bench{ /*newBenchOptimal(capacity)*/ }
-		for _, c := range benchClients {
+		for _, c := range clients {
 			c.Init(capacity)
 			benches = append(benches, newBenchClient(c))
 		}
+
+		tempResults := make(map[string]float64)
 
 		runtime.GC()
 
@@ -70,11 +98,70 @@ func runBench(name string, caps []int) {
 				b.Set(fmt.Sprintf("%d", k))
 			}
 
-			fmt.Printf("\t\t%s simulator: %0.2f\n", b.Name(), b.Ratio())
+			cacheToResults[b.Name()] = append(cacheToResults[b.Name()], ratioResult{
+				capacity: capacity,
+				ratio:    b.Ratio(),
+			})
+			tempResults[b.Name()] = b.Ratio()
 			b.Close()
 		}
+
+		stringCapacity := strconv.Itoa(capacity)
+		tw := tablewriter.NewWriter(os.Stdout)
+		tw.SetHeader([]string{"Cache", "Capacity", "Hit ratio"})
+		for _, cacheName := range cacheNames {
+			tw.Append([]string{cacheName, stringCapacity, fmt.Sprintf("%0.2f%%", tempResults[cacheName])})
+		}
+		tw.Render()
+		fmt.Println()
 	}
 	runtime.GC()
+
+	line := charts.NewLine()
+	line.SetGlobalOptions(
+		charts.WithXAxisOpts(opts.XAxis{
+			Name: "capacity",
+		}),
+		charts.WithYAxisOpts(opts.YAxis{
+			Name: "hit ratio",
+			AxisLabel: &opts.AxisLabel{
+				Formatter: "{value}%",
+			},
+		}),
+		charts.WithTitleOpts(opts.Title{
+			Title: name,
+			Right: "50%",
+		}),
+		charts.WithLegendOpts(opts.Legend{
+			Orient: "vertical",
+			Right:  "0%",
+			Top:    "10%",
+		}),
+		// for png render
+		charts.WithAnimation(false),
+	)
+
+	line = line.SetXAxis(caps)
+	line.BackgroundColor = "white"
+	for _, cacheName := range cacheNames {
+		results := cacheToResults[cacheName]
+		var lineData []opts.LineData
+		for _, res := range results {
+			lineData = append(lineData, opts.LineData{
+				Value: res.ratio,
+			})
+		}
+		line = line.AddSeries(cacheName, lineData)
+	}
+
+	line.SetSeriesOptions(charts.WithLineChartOpts(
+		opts.LineChart{
+			Smooth: opts.Bool(true),
+		}),
+	)
+
+	render.MakeChartSnapshot(line.RenderContent(), imagePath)
+	fmt.Println()
 }
 
 func main() {

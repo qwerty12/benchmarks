@@ -11,6 +11,7 @@ require (
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/karlseguin/ccache/v3 v3.0.5
 	github.com/maypok86/otter v1.0.1-0.20240208151759-9bdf722b59ae
+	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pingcap/go-ycsb v1.0.1
 	github.com/scalalang2/golang-fifo/v2 v2.0.0-20231212012136-274aca942e14
 )
@@ -34,7 +35,6 @@ require (
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/ncw/directio v1.0.5 // indirect
-	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/pingcap/errors v0.11.5-0.20211224045212-9687c2b0f87c // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/zeebo/xxh3 v1.0.2 // indirect

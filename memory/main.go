@@ -11,11 +11,10 @@ import (
 	"github.com/Yiling-J/theine-go"
 	"github.com/dgraph-io/ristretto"
 	hashicorp "github.com/hashicorp/golang-lru/v2/expirable"
-	"github.com/karlseguin/ccache/v3"
 	"github.com/maypok86/otter"
 )
 
-var keys []string
+var keys []uint32
 
 func main() {
 	name := os.Args[1]
@@ -25,9 +24,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	keys = make([]string, 0, capacity)
+	keys = make([]uint32, 0, capacity)
 	for i := 0; i < capacity; i++ {
-		keys = append(keys, strconv.Itoa(i))
+		keys = append(keys, uint32(i))
 	}
 
 	constructor, ok := map[string]func(int){
@@ -35,7 +34,6 @@ func main() {
 		"ristretto": newRistretto,
 		"theine":    newTheine,
 		"hashicorp": newHashicorp,
-		"ccache":    newCcache,
 	}[name]
 	if !ok {
 		log.Fatalf("not found cache %s\n", name)
@@ -46,26 +44,28 @@ func main() {
 
 	constructor(capacity)
 
+	runtime.GC()
+
 	var m runtime.MemStats
 	runtime.ReadMemStats(&m)
 
-	fmt.Printf("%s\t%v KiB\t%v KiB\n",
+	fmt.Printf("%s\t%d\t%v KiB\t%v KiB\n",
 		name,
+		capacity,
 		(m.Alloc-o.Alloc)/1024,
 		(m.TotalAlloc-o.TotalAlloc)/1024,
 	)
 }
 
 func newOtter(capacity int) {
-	cache, err := otter.MustBuilder[string, int](capacity).
-		InitialCapacity(capacity).
+	cache, err := otter.MustBuilder[uint32, uint32](capacity).
 		WithTTL(time.Hour).
 		Build()
 	if err != nil {
 		log.Fatal(err)
 	}
-	for i := 0; i < capacity; i++ {
-		cache.Set(keys[i], i)
+	for _, key := range keys {
+		cache.Set(key, key)
 	}
 }
 
@@ -78,31 +78,24 @@ func newRistretto(capacity int) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	for i := 0; i < capacity; i++ {
-		cache.SetWithTTL(keys[i], i, 1, time.Hour)
+	for _, key := range keys {
+		cache.SetWithTTL(key, key, 1, time.Hour)
 	}
 }
 
 func newTheine(capacity int) {
-	cache, err := theine.NewBuilder[string, int](int64(capacity)).Build()
+	cache, err := theine.NewBuilder[uint32, uint32](int64(capacity)).Build()
 	if err != nil {
 		log.Fatal(err)
 	}
-	for i := 0; i < capacity; i++ {
-		cache.SetWithTTL(keys[i], i, 1, time.Hour)
+	for _, key := range keys {
+		cache.SetWithTTL(key, key, 1, time.Hour)
 	}
 }
 
 func newHashicorp(capacity int) {
-	cache := hashicorp.NewLRU[string, int](capacity, nil, time.Hour)
-	for i := 0; i < capacity; i++ {
-		cache.Add(keys[i], i)
-	}
-}
-
-func newCcache(capacity int) {
-	cache := ccache.New(ccache.Configure[int]().MaxSize(int64(capacity)))
-	for i := 0; i < capacity; i++ {
-		cache.Set(keys[i], i, time.Hour)
+	cache := hashicorp.NewLRU[uint32, uint32](capacity, nil, time.Hour)
+	for _, key := range keys {
+		cache.Add(key, key)
 	}
 }

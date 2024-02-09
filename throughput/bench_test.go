@@ -1,4 +1,4 @@
-package perf
+package throughput
 
 import (
 	"fmt"
@@ -83,7 +83,7 @@ func newZipfData() data {
 	}
 
 	return data{
-		name: "Zipf",
+		name: "zipf",
 		keys: keys,
 	}
 }

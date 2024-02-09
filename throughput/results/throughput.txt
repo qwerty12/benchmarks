@@ -1,0 +1,25 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/maypok86/benchmarks/throughput
+BenchmarkCache/zipf_otter_reads=100%,writes=0%-8         	285645423	         4.198 ns/op	 238223783 ops/s
+BenchmarkCache/zipf_theine_reads=100%,writes=0%-8        	10803680	       109.7 ns/op	   9118351 ops/s
+BenchmarkCache/zipf_ristretto_reads=100%,writes=0%-8     	51357458	        25.93 ns/op	  38566616 ops/s
+BenchmarkCache/zipf_ccache_reads=100%,writes=0%-8        	23418879	        61.81 ns/op	  16178111 ops/s
+BenchmarkCache/zipf_otter_reads=75%,writes=25%-8         	165591776	         7.223 ns/op	 138439291 ops/s
+BenchmarkCache/zipf_theine_reads=75%,writes=25%-8        	 9750858	       139.6 ns/op	   7164925 ops/s
+BenchmarkCache/zipf_ristretto_reads=75%,writes=25%-8     	22207245	        46.59 ns/op	  21464057 ops/s
+BenchmarkCache/zipf_ccache_reads=75%,writes=25%-8        	16873354	        71.63 ns/op	  13960687 ops/s
+BenchmarkCache/zipf_otter_reads=50%,writes=50%-8         	83452136	        12.26 ns/op	  81547542 ops/s
+BenchmarkCache/zipf_theine_reads=50%,writes=50%-8        	12554828	        91.63 ns/op	  10913333 ops/s
+BenchmarkCache/zipf_ristretto_reads=50%,writes=50%-8     	21768657	        58.37 ns/op	  17131069 ops/s
+BenchmarkCache/zipf_ccache_reads=50%,writes=50%-8        	 7834250	       154.7 ns/op	   6465496 ops/s
+BenchmarkCache/zipf_otter_reads=25%,writes=75%-8         	52542362	        22.92 ns/op	  43630581 ops/s
+BenchmarkCache/zipf_theine_reads=25%,writes=75%-8        	12317804	        94.75 ns/op	  10554138 ops/s
+BenchmarkCache/zipf_ristretto_reads=25%,writes=75%-8     	20005459	        60.82 ns/op	  16442575 ops/s
+BenchmarkCache/zipf_ccache_reads=25%,writes=75%-8        	 6900565	       186.5 ns/op	   5361445 ops/s
+BenchmarkCache/zipf_otter_reads=0%,writes=100%-8         	10417759	       124.0 ns/op	   8062070 ops/s
+BenchmarkCache/zipf_theine_reads=0%,writes=100%-8        	26494842	        43.83 ns/op	  22817214 ops/s
+BenchmarkCache/zipf_ristretto_reads=0%,writes=100%-8     	12168746	       101.5 ns/op	   9854832 ops/s
+BenchmarkCache/zipf_ccache_reads=0%,writes=100%-8        	 2369119	       553.9 ns/op	   1805524 ops/s
+PASS
+ok  	github.com/maypok86/benchmarks/throughput	31.845s

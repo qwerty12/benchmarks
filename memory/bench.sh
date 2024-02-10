@@ -6,6 +6,7 @@ caches=(
   "otter"
   "theine"
   "ristretto"
+  "ccache"
   "hashicorp"
 )
 
@@ -16,11 +17,11 @@ result_path="./results/memory.txt"
 
 echo -n "" > "$result_path"
 
-for cache in "${caches[@]}"
+for capacity in "${capacities[@]}"
 do
-  for capacity in "${capacities[@]}"
+  for cache in "${caches[@]}"
   do
-    GOMAXPROCS=8 go run main.go "$cache" "$capacity" >> "$result_path"
+    go run main.go "$cache" "$capacity" >> "$result_path"
   done
 done
 

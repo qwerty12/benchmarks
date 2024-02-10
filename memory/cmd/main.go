@@ -16,7 +16,7 @@ import (
 
 type memoryResult struct {
 	cacheName string
-	alloc     int
+	alloc     float64
 }
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
 		if err != nil {
 			log.Fatal("can not parse benchmark output", err)
 		}
-		alloc, err := strconv.Atoi(fields[2])
+		alloc, err := strconv.ParseFloat(fields[2], 64)
 		if err != nil {
 			log.Fatal("can not parse benchmark output", err)
 		}
@@ -63,7 +63,7 @@ func main() {
 			charts.WithYAxisOpts(opts.YAxis{
 				Name: "alloc",
 				AxisLabel: &opts.AxisLabel{
-					Formatter: "{value} KiB",
+					Formatter: "{value} MB",
 				},
 			}),
 			charts.WithTitleOpts(opts.Title{

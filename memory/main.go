@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/karlseguin/ccache/v3"
 	"log"
+	"math"
 	"os"
 	"runtime"
 	"strconv"
@@ -14,7 +16,20 @@ import (
 	"github.com/maypok86/otter"
 )
 
-var keys []uint32
+var keys []string
+
+func round(num float64) int {
+	return int(num + math.Copysign(0.5, num))
+}
+
+func toFixed(num float64, precision int) float64 {
+	output := math.Pow(10, float64(precision))
+	return float64(round(num*output)) / output
+}
+
+func toMB(bytes uint64) float64 {
+	return float64(bytes) / 1024 / 1024
+}
 
 func main() {
 	name := os.Args[1]
@@ -24,9 +39,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	keys = make([]uint32, 0, capacity)
+	keys = make([]string, 0, capacity)
 	for i := 0; i < capacity; i++ {
-		keys = append(keys, uint32(i))
+		keys = append(keys, strconv.Itoa(i))
 	}
 
 	constructor, ok := map[string]func(int){
@@ -34,6 +49,7 @@ func main() {
 		"ristretto": newRistretto,
 		"theine":    newTheine,
 		"hashicorp": newHashicorp,
+		"ccache":    newCcache,
 	}[name]
 	if !ok {
 		log.Fatalf("not found cache %s\n", name)
@@ -49,16 +65,16 @@ func main() {
 	var m runtime.MemStats
 	runtime.ReadMemStats(&m)
 
-	fmt.Printf("%s\t%d\t%v KiB\t%v KiB\n",
+	fmt.Printf("%s\t%d\t%v MB\t%v MB\n",
 		name,
 		capacity,
-		(m.Alloc-o.Alloc)/1024,
-		(m.TotalAlloc-o.TotalAlloc)/1024,
+		toFixed(toMB(m.Alloc-o.Alloc), 2),
+		toFixed(toMB(m.TotalAlloc-o.TotalAlloc), 2),
 	)
 }
 
 func newOtter(capacity int) {
-	cache, err := otter.MustBuilder[uint32, uint32](capacity).
+	cache, err := otter.MustBuilder[string, string](capacity).
 		WithTTL(time.Hour).
 		Build()
 	if err != nil {
@@ -84,7 +100,7 @@ func newRistretto(capacity int) {
 }
 
 func newTheine(capacity int) {
-	cache, err := theine.NewBuilder[uint32, uint32](int64(capacity)).Build()
+	cache, err := theine.NewBuilder[string, string](int64(capacity)).Build()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -93,8 +109,15 @@ func newTheine(capacity int) {
 	}
 }
 
+func newCcache(capacity int) {
+	cache := ccache.New(ccache.Configure[string]().MaxSize(int64(capacity)))
+	for _, key := range keys {
+		cache.Set(key, key, time.Hour)
+	}
+}
+
 func newHashicorp(capacity int) {
-	cache := hashicorp.NewLRU[uint32, uint32](capacity, nil, time.Hour)
+	cache := hashicorp.NewLRU[string, string](capacity, nil, time.Hour)
 	for _, key := range keys {
 		cache.Add(key, key)
 	}

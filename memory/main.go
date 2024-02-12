@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/karlseguin/ccache/v3"
 	"log"
 	"math"
 	"os"
@@ -13,6 +12,7 @@ import (
 	"github.com/Yiling-J/theine-go"
 	"github.com/dgraph-io/ristretto"
 	hashicorp "github.com/hashicorp/golang-lru/v2/expirable"
+	"github.com/karlseguin/ccache/v3"
 	"github.com/maypok86/otter"
 )
 

@@ -1,0 +1,48 @@
+package policy
+
+import (
+	"github.com/maypok86/benchmarks/client"
+	"github.com/maypok86/benchmarks/simulator/internal/event"
+)
+
+type Policy struct {
+	client client.Client[uint64, uint64]
+	hits   uint64
+	misses uint64
+}
+
+func NewPolicy(client client.Client[uint64, uint64]) *Policy {
+	return &Policy{
+		client: client,
+	}
+}
+
+func (p *Policy) Record(event event.AccessEvent) {
+	key := event.Key()
+	value, ok := p.client.Get(key)
+	if ok {
+		if key != value {
+			panic("not valid value")
+		}
+		p.hits++
+	} else {
+		p.client.Set(key, key)
+		p.misses++
+	}
+}
+
+func (p *Policy) Name() string {
+	return p.client.Name()
+}
+
+func (p *Policy) Init(capacity int) {
+	p.client.Init(capacity)
+}
+
+func (p *Policy) Ratio() float64 {
+	return 100 * (float64(p.hits) / float64(p.hits+p.misses))
+}
+
+func (p *Policy) Close() {
+	p.client.Close()
+}

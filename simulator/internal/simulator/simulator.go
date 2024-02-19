@@ -21,6 +21,7 @@ func getClients() map[string]client.Client[uint64, uint64] {
 	cl := []client.Client[uint64, uint64]{
 		&client.Otter[uint64, uint64]{},
 		&client.Theine[uint64, uint64]{},
+		&client.TinyLFU{},
 		&client.Ristretto[uint64, uint64]{},
 		&client.LRU[uint64, uint64]{},
 		&client.ARC[uint64, uint64]{},

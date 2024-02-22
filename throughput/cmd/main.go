@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -23,9 +24,15 @@ func main() {
 	path := os.Args[1]
 	dir := filepath.Dir(path)
 
+	if err := run(path, dir); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func run(path, dir string) error {
 	perfFile, err := os.Open(path)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	defer perfFile.Close()
 
@@ -35,7 +42,7 @@ func main() {
 		lines = append(lines, scanner.Text())
 	}
 	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	workloadToCaches := make(map[string][]cacheInfo)
@@ -43,7 +50,7 @@ func main() {
 		fields := strings.Fields(line)
 		opsPerSec, err := strconv.Atoi(fields[4])
 		if err != nil {
-			log.Fatal("can not parse benchmark output")
+			return errors.New("can not parse benchmark output")
 		}
 
 		benchInfo := strings.Split(fields[0], "/")[1]
@@ -90,4 +97,6 @@ func main() {
 		imagePath := filepath.Join(dir, fmt.Sprintf("%s.png", outputName))
 		render.MakeChartSnapshot(bar.RenderContent(), imagePath)
 	}
+
+	return nil
 }

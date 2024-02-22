@@ -20,9 +20,9 @@ func NewOptimal(capacity int) *Optimal {
 	}
 }
 
-func (o *Optimal) Record(event event.AccessEvent) {
-	o.hits[event.Key()]++
-	o.access = append(o.access, event.Key())
+func (o *Optimal) Record(e event.AccessEvent) {
+	o.hits[e.Key()]++
+	o.access = append(o.access, e.Key())
 }
 
 func (o *Optimal) Ratio() float64 {

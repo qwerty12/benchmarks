@@ -8,10 +8,10 @@ type Ristretto[K comparable, V any] struct {
 	client *ristretto.Cache
 }
 
-func (c *Ristretto[K, V]) Init(cap int) {
+func (c *Ristretto[K, V]) Init(capacity int) {
 	client, err := ristretto.NewCache(&ristretto.Config{
-		NumCounters: int64(cap * 10),
-		MaxCost:     int64(cap),
+		NumCounters: int64(capacity * 10),
+		MaxCost:     int64(capacity),
 		BufferItems: 64,
 	})
 	if err != nil {

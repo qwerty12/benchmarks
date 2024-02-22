@@ -23,9 +23,15 @@ func main() {
 	path := os.Args[1]
 	dir := filepath.Dir(path)
 
+	if err := run(path, dir); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func run(path, dir string) error {
 	memoryFile, err := os.Open(path)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	defer memoryFile.Close()
 
@@ -35,7 +41,7 @@ func main() {
 		lines = append(lines, scanner.Text())
 	}
 	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	capacityToResults := make(map[int][]memoryResult)
@@ -44,11 +50,11 @@ func main() {
 		cacheName := fields[0]
 		capacity, err := strconv.Atoi(fields[1])
 		if err != nil {
-			log.Fatal("can not parse benchmark output", err)
+			return fmt.Errorf("can not parse benchmark output: %w", err)
 		}
 		alloc, err := strconv.ParseFloat(fields[2], 64)
 		if err != nil {
-			log.Fatal("can not parse benchmark output", err)
+			return fmt.Errorf("can not parse benchmark output: %w", err)
 		}
 
 		capacityToResults[capacity] = append(capacityToResults[capacity], memoryResult{
@@ -93,4 +99,6 @@ func main() {
 		imagePath := filepath.Join(dir, fmt.Sprintf("%s.png", outputName))
 		render.MakeChartSnapshot(bar.RenderContent(), imagePath)
 	}
+
+	return nil
 }

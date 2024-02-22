@@ -28,7 +28,8 @@ func formatInt(n int64) string {
 		if i == 0 {
 			return string(out)
 		}
-		if k++; k == 3 {
+		k++
+		if k == 3 {
 			j, k = j-1, 0
 			out[j] = ','
 		}

@@ -41,10 +41,7 @@ func (og *OracleGeneral) Parse(send func(event event.AccessEvent) bool) (bool, e
 		return false, WrapError(err)
 	}
 
-	// clockTime := bin.Uint32(og.buffer)
 	id := bin.Uint64(og.buffer[4:])
-	// weight := bin.Uint32(buffer[12:])
-	// nextAccessTime := bin.Int64(buffer[16:]) ?????????
 
 	return send(event.NewAccessEvent(id)), nil
 }

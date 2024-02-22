@@ -6,8 +6,8 @@ type FIFO[K comparable, V any] struct {
 	client fifo.Cache[K, V]
 }
 
-func (c *FIFO[K, V]) Init(cap int) {
-	client := fifo.NewS3FIFO[K, V](cap)
+func (c *FIFO[K, V]) Init(capacity int) {
+	client := fifo.NewS3FIFO[K, V](capacity)
 	c.client = client
 }
 

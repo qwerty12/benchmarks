@@ -1,3 +1,19 @@
+.PHONY: setup
+setup: deps ## Setup development environment
+	cp ./scripts/pre-push.sh .git/hooks/pre-push
+	chmod +x .git/hooks/pre-push
+
+.PHONY: deps
+deps: ## Install all the build and lint dependencies
+	bash scripts/deps.sh
+
+.PHONY: lint
+lint: ## Run all the linters
+	golangci-lint run -v ./...
+
+.PHONY: ci
+ci: lint ## Run all the tests and code checks
+
 .PHONY: fmt
 fmt: ## Run format tools on all go files
 	gci write --skip-vendor --skip-generated \

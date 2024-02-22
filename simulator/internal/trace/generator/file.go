@@ -12,7 +12,7 @@ type File struct {
 	base
 }
 
-func NewFile(path string, traceType string, limit *uint) (*File, error) {
+func NewFile(path, traceType string, limit *uint) (*File, error) {
 	reader, err := trace.NewReader(path)
 	if err != nil {
 		return nil, fmt.Errorf("create file reader: %w", err)

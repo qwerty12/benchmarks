@@ -8,8 +8,8 @@ type Theine[K comparable, V any] struct {
 	client *theine.Cache[K, V]
 }
 
-func (c *Theine[K, V]) Init(cap int) {
-	client, err := theine.NewBuilder[K, V](int64(cap)).Build()
+func (c *Theine[K, V]) Init(capacity int) {
+	client, err := theine.NewBuilder[K, V](int64(capacity)).Build()
 	if err != nil {
 		panic(err)
 	}

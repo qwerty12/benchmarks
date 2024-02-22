@@ -59,7 +59,7 @@ func (s Simulator) Simulate() error {
 		for _, cache := range s.cfg.Caches {
 			c, ok := clients[cache]
 			if !ok {
-				return fmt.Errorf("not valid cache name: %w", cache)
+				return fmt.Errorf("not valid cache name: %s", cache)
 			}
 
 			policies = append(policies, policy.NewPolicy(c))
@@ -115,8 +115,8 @@ func (s Simulator) Simulate() error {
 	return nil
 }
 
-func (s Simulator) simulatePolicy(p policyContract, cap uint) error {
-	capacity := int(cap)
+func (s Simulator) simulatePolicy(p policyContract, unsignedCapacity uint) error {
+	capacity := int(unsignedCapacity)
 	p.Init(capacity)
 
 	traceGenerator, err := newGenerator(s.cfg)

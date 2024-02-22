@@ -11,10 +11,10 @@ type Ccache[V any] struct {
 	client *ccache.Cache[V]
 }
 
-func (c *Ccache[V]) Init(cap int) {
+func (c *Ccache[V]) Init(capacity int) {
 	client := ccache.New(
 		ccache.Configure[V]().
-			MaxSize(int64(cap)).
+			MaxSize(int64(capacity)).
 			Buckets(uint32(16 * runtime.GOMAXPROCS(0))),
 	)
 	c.client = client

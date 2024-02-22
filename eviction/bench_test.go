@@ -29,18 +29,20 @@ type benchCase struct {
 }
 
 var benchCases = []benchCase{
-	//{"capacity=1", 1},
-	//{"capacity=100", 100},
+	// {"capacity=1", 1},
+	// {"capacity=100", 100},
 	{"capacity=10000", 10000},
-	//{"capacity=1000000", 1000000},
-	//{"capacity=10000000", 10000000},
+	// {"capacity=1000000", 1000000},
+	// {"capacity=10000000", 10000000},
 }
 
 func runParallelBenchmark(b *testing.B, benchFunc func(pb *testing.PB)) {
+	b.Helper()
+
 	b.ResetTimer()
 	start := time.Now()
 	b.RunParallel(benchFunc)
-	opsPerSec := float64(b.N) / float64(time.Since(start).Seconds())
+	opsPerSec := float64(b.N) / time.Since(start).Seconds()
 	b.ReportMetric(opsPerSec, "ops/s")
 }
 
@@ -49,6 +51,8 @@ func runCacheBenchmark(
 	benchCase benchCase,
 	c client.Client[int, struct{}],
 ) {
+	b.Helper()
+
 	c.Init(benchCase.cacheSize)
 
 	for i := 0; i < benchCase.cacheSize; i++ {

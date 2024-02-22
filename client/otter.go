@@ -8,8 +8,8 @@ type Otter[K comparable, V any] struct {
 	client otter.Cache[K, V]
 }
 
-func (c *Otter[K, V]) Init(cap int) {
-	client, err := otter.MustBuilder[K, V](cap).Build()
+func (c *Otter[K, V]) Init(capacity int) {
+	client, err := otter.MustBuilder[K, V](capacity).Build()
 	if err != nil {
 		panic(err)
 	}

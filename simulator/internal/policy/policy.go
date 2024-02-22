@@ -11,14 +11,14 @@ type Policy struct {
 	misses uint64
 }
 
-func NewPolicy(client client.Client[uint64, uint64]) *Policy {
+func NewPolicy(c client.Client[uint64, uint64]) *Policy {
 	return &Policy{
-		client: client,
+		client: c,
 	}
 }
 
-func (p *Policy) Record(event event.AccessEvent) {
-	key := event.Key()
+func (p *Policy) Record(e event.AccessEvent) {
+	key := e.Key()
 	value, ok := p.client.Get(key)
 	if ok {
 		if key != value {

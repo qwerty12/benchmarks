@@ -11,7 +11,7 @@ type Zipf struct {
 	base
 }
 
-func NewZipf(s float64, v float64, imax uint64, limit *uint) *Zipf {
+func NewZipf(s, v float64, imax uint64, limit *uint) *Zipf {
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	z := rand.NewZipf(r, s, v, imax)
 

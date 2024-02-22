@@ -89,10 +89,12 @@ func newZipfData() data {
 }
 
 func runParallelBenchmark(b *testing.B, benchFunc func(pb *testing.PB)) {
+	b.Helper()
+
 	b.ResetTimer()
 	start := time.Now()
 	b.RunParallel(benchFunc)
-	opsPerSec := float64(b.N) / float64(time.Since(start).Seconds())
+	opsPerSec := float64(b.N) / time.Since(start).Seconds()
 	b.ReportMetric(opsPerSec, "ops/s")
 }
 
@@ -102,6 +104,8 @@ func runCacheBenchmark(
 	keys []string,
 	c client.Client[string, string],
 ) {
+	b.Helper()
+
 	c.Init(dataLength)
 
 	for i := 0; i < dataLength; i++ {

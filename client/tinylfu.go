@@ -1,16 +1,17 @@
 package client
 
 import (
-	"github.com/dgryski/go-tinylfu"
 	"strconv"
+
+	"github.com/dgryski/go-tinylfu"
 )
 
 type TinyLFU struct {
 	client *tinylfu.T[uint64]
 }
 
-func (c *TinyLFU) Init(cap int) {
-	client := tinylfu.New[uint64](cap, 10*cap)
+func (c *TinyLFU) Init(capacity int) {
+	client := tinylfu.New[uint64](capacity, 10*capacity)
 	c.client = client
 }
 
@@ -22,7 +23,7 @@ func (c *TinyLFU) Get(key uint64) (uint64, bool) {
 	return c.client.Get(strconv.FormatUint(key, 10))
 }
 
-func (c *TinyLFU) Set(key uint64, value uint64) {
+func (c *TinyLFU) Set(key, value uint64) {
 	c.client.Add(strconv.FormatUint(key, 10), value)
 }
 

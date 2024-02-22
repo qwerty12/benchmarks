@@ -9,8 +9,8 @@ type LRU[K comparable, V any] struct {
 	client *lru.Cache[K, V]
 }
 
-func (c *LRU[K, V]) Init(cap int) {
-	client, err := lru.New[K, V](cap)
+func (c *LRU[K, V]) Init(capacity int) {
+	client, err := lru.New[K, V](capacity)
 	if err != nil {
 		panic(err)
 	}
@@ -37,8 +37,8 @@ type ARC[K comparable, V any] struct {
 	client *arc.ARCCache[K, V]
 }
 
-func (c *ARC[K, V]) Init(cap int) {
-	client, err := arc.NewARC[K, V](cap)
+func (c *ARC[K, V]) Init(capacity int) {
+	client, err := arc.NewARC[K, V](capacity)
 	if err != nil {
 		panic(err)
 	}

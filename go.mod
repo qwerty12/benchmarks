@@ -12,7 +12,7 @@ require (
 	github.com/hashicorp/golang-lru/arc/v2 v2.0.7
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/karlseguin/ccache/v3 v3.0.5
-	github.com/klauspost/compress v1.13.6
+	github.com/klauspost/compress v1.17.7
 	github.com/maypok86/otter v1.0.1-0.20240208151759-9bdf722b59ae
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pingcap/go-ycsb v1.0.1

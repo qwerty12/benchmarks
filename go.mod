@@ -6,6 +6,7 @@ require (
 	github.com/BurntSushi/toml v1.3.2
 	github.com/Yiling-J/theine-go v0.3.2
 	github.com/dgraph-io/ristretto v0.1.1
+	github.com/dgryski/go-clockpro v0.0.0-20140817124034-edc6d3eeb96e
 	github.com/dgryski/go-tinylfu v0.0.0-20230408121034-c8e5d79bbb04
 	github.com/go-echarts/go-echarts/v2 v2.4.0-rc1.0.20240207165231-c682d25c82b8
 	github.com/go-echarts/snapshot-chromedp v0.0.1

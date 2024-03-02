@@ -95,7 +95,9 @@ func run(path, dir string) error {
 
 		outputName := strings.Join(strings.Split(workload, "%"), "")
 		imagePath := filepath.Join(dir, fmt.Sprintf("%s.png", outputName))
-		render.MakeChartSnapshot(bar.RenderContent(), imagePath)
+		if err := render.MakeChartSnapshot(bar.RenderContent(), imagePath); err != nil {
+			return fmt.Errorf("create chart: %w", err)
+		}
 	}
 
 	return nil

@@ -112,7 +112,10 @@ func (s Simulator) Simulate() error {
 		})
 	}
 
-	report.NewReporter(s.cfg.Name, table).Report()
+	reporter := report.NewReporter(s.cfg.Name, table)
+	if err := reporter.Report(); err != nil {
+		return fmt.Errorf("create report: %w", err)
+	}
 	return nil
 }
 

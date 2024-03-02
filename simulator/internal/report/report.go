@@ -6,23 +6,32 @@ import (
 	"github.com/maypok86/benchmarks/simulator/internal/report/table"
 )
 
+type reporter interface {
+	Report() error
+}
+
 type Reporter struct {
-	chart *chart.Chart
-	table *table.Table
+	reporters []reporter
 }
 
 func NewReporter(name string, t [][]simulation.Result) *Reporter {
 	return &Reporter{
-		chart: chart.NewChart(name, t),
-		table: table.NewTable(t),
+		reporters: []reporter{
+			table.NewTable(t),
+			chart.NewChart(name, t),
+		},
 	}
 }
 
-func (r *Reporter) Report() {
+func (r *Reporter) Report() error {
 	if r == nil {
-		return
+		return nil
 	}
 
-	r.table.Report()
-	r.chart.Report()
+	for _, rep := range r.reporters {
+		if err := rep.Report(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

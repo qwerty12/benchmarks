@@ -46,9 +46,9 @@ func NewTable(table [][]simulation.Result) *Table {
 	}
 }
 
-func (t *Table) Report() {
+func (t *Table) Report() error {
 	if t == nil {
-		return
+		return nil
 	}
 
 	capacities := make([]string, 0, len(t.table[0]))
@@ -69,4 +69,5 @@ func (t *Table) Report() {
 		tw.Append(processed)
 	}
 	tw.Render()
+	return nil
 }

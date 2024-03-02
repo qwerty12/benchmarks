@@ -2,7 +2,6 @@ package chart
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -26,16 +25,16 @@ func NewChart(name string, table [][]simulation.Result) *Chart {
 	}
 }
 
-func (c *Chart) Report() {
+func (c *Chart) Report() error {
 	if c == nil {
-		return
+		return nil
 	}
 
 	dir := "results"
 	imagePath := filepath.Join(dir, fmt.Sprintf("%s.png", strings.ToLower(c.name)))
 
 	if err := os.MkdirAll(dir, os.ModePerm); err != nil {
-		log.Fatal(err)
+		return fmt.Errorf("create directory: %w", err)
 	}
 
 	line := charts.NewLine()
@@ -85,5 +84,8 @@ func (c *Chart) Report() {
 		}),
 	)
 
-	render.MakeChartSnapshot(line.RenderContent(), imagePath)
+	if err := render.MakeChartSnapshot(line.RenderContent(), imagePath); err != nil {
+		return fmt.Errorf("save chart: %w", err)
+	}
+	return nil
 }

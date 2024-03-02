@@ -97,7 +97,9 @@ func run(path, dir string) error {
 
 		outputName := fmt.Sprintf("memory_%d", capacity)
 		imagePath := filepath.Join(dir, fmt.Sprintf("%s.png", outputName))
-		render.MakeChartSnapshot(bar.RenderContent(), imagePath)
+		if err := render.MakeChartSnapshot(bar.RenderContent(), imagePath); err != nil {
+			return fmt.Errorf("save chart: %w", err)
+		}
 	}
 
 	return nil

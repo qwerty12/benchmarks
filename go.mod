@@ -14,7 +14,7 @@ require (
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/karlseguin/ccache/v3 v3.0.5
 	github.com/klauspost/compress v1.17.7
-	github.com/maypok86/otter v1.1.1
+	github.com/maypok86/otter v1.2.0
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pingcap/go-ycsb v1.0.1
 	github.com/scalalang2/golang-fifo/v2 v2.0.0-20231212012136-274aca942e14
@@ -27,7 +27,6 @@ require (
 	github.com/chromedp/chromedp v0.9.5 // indirect
 	github.com/chromedp/sysutil v1.0.0 // indirect
 	github.com/dolthub/maphash v0.1.0 // indirect
-	github.com/dolthub/swiss v0.2.1 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/gammazero/deque v0.2.1 // indirect
 	github.com/gobwas/httphead v0.1.0 // indirect

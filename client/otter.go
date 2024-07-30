@@ -1,6 +1,8 @@
 package client
 
 import (
+	"time"
+
 	"github.com/maypok86/otter"
 )
 
@@ -9,7 +11,7 @@ type Otter[K comparable, V any] struct {
 }
 
 func (c *Otter[K, V]) Init(capacity int) {
-	client, err := otter.MustBuilder[K, V](capacity).Build()
+	client, err := otter.MustBuilder[K, V](capacity).WithTTL(time.Hour).Build()
 	if err != nil {
 		panic(err)
 	}

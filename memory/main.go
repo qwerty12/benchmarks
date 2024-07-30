@@ -10,8 +10,10 @@ import (
 	"time"
 
 	"github.com/Yiling-J/theine-go"
+	"github.com/bluele/gcache"
 	"github.com/dgraph-io/ristretto"
 	hashicorp "github.com/hashicorp/golang-lru/v2/expirable"
+	"github.com/jellydator/ttlcache/v3"
 	"github.com/karlseguin/ccache/v3"
 	"github.com/maypok86/otter"
 )
@@ -45,11 +47,13 @@ func main() {
 	}
 
 	constructor, ok := map[string]func(int){
-		"otter":     newOtter,
-		"ristretto": newRistretto,
-		"theine":    newTheine,
-		"hashicorp": newHashicorp,
-		"ccache":    newCcache,
+		"otter":      newOtter,
+		"theine":     newTheine,
+		"ristretto":  newRistretto,
+		"ccache":     newCcache,
+		"gcache":     newGcache,
+		"ttlcache":   newTTLCache,
+		"golang-lru": newHashicorp,
 	}[name]
 	if !ok {
 		log.Fatalf("not found cache %s\n", name)
@@ -60,7 +64,7 @@ func main() {
 
 	constructor(capacity)
 
-	runtime.GC()
+	// runtime.GC()
 
 	var m runtime.MemStats
 	runtime.ReadMemStats(&m)
@@ -87,9 +91,10 @@ func newOtter(capacity int) {
 
 func newRistretto(capacity int) {
 	cache, err := ristretto.NewCache(&ristretto.Config{
-		NumCounters: 10 * int64(capacity),
-		MaxCost:     int64(capacity),
-		BufferItems: 64,
+		NumCounters:        10 * int64(capacity),
+		MaxCost:            int64(capacity),
+		BufferItems:        64,
+		IgnoreInternalCost: true,
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -113,6 +118,26 @@ func newCcache(capacity int) {
 	cache := ccache.New(ccache.Configure[string]().MaxSize(int64(capacity)))
 	for _, key := range keys {
 		cache.Set(key, key, time.Hour)
+	}
+}
+
+func newGcache(capacity int) {
+	cache := gcache.New(capacity).Expiration(time.Hour).LRU().Build()
+	for _, key := range keys {
+		if err := cache.Set(key, key); err != nil {
+			panic(err)
+		}
+	}
+}
+
+func newTTLCache(capacity int) {
+	cache := ttlcache.New[string, string](
+		ttlcache.WithTTL[string, string](time.Hour),
+		ttlcache.WithCapacity[string, string](uint64(capacity)),
+	)
+	go cache.Start()
+	for _, key := range keys {
+		cache.Set(key, key, ttlcache.DefaultTTL)
 	}
 }
 

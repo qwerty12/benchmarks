@@ -7,11 +7,12 @@ caches=(
   "theine"
   "ristretto"
   "ccache"
-  "hashicorp"
+  "gcache"
+  "ttlcache"
+  "golang-lru"
 )
 
-# capacity = 25000 used in caffeine benchmarks
-capacities=(10000 25000 100000 1000000)
+capacities=(1000 10000 25000 100000 1000000)
 
 result_path="./results/memory.txt"
 

@@ -29,6 +29,9 @@ var (
 		&client.Theine[string, string]{},
 		&client.Ristretto[string, string]{},
 		&client.Ccache[string]{},
+		&client.Gcache[string, string]{},
+		&client.TTLCache[string, string]{},
+		&client.GolangLRU[string, string]{},
 	}
 )
 

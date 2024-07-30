@@ -11,4 +11,4 @@ caches = [
 
 [file]
 trace_type = "arc"
-paths = [ "trace/arc/s3.gz" ]
+paths = [ "trace/arc/ds1.gz" ]

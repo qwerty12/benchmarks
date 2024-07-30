@@ -1,6 +1,8 @@
 package client
 
 import (
+	"time"
+
 	"github.com/Yiling-J/theine-go"
 )
 
@@ -25,7 +27,7 @@ func (c *Theine[K, V]) Get(key K) (V, bool) {
 }
 
 func (c *Theine[K, V]) Set(key K, value V) {
-	c.client.Set(key, value, 1)
+	c.client.SetWithTTL(key, value, 1, time.Hour)
 }
 
 func (c *Theine[K, V]) Close() {

@@ -120,6 +120,7 @@ func (s Simulator) Simulate() error {
 }
 
 func (s Simulator) simulatePolicy(p policyContract, unsignedCapacity uint) error {
+	//nolint:gosec // there will never be an overflow
 	capacity := int(unsignedCapacity)
 	p.Init(capacity)
 

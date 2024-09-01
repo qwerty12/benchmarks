@@ -15,6 +15,7 @@ func (c *Ccache[V]) Init(capacity int) {
 	client := ccache.New(
 		ccache.Configure[V]().
 			MaxSize(int64(capacity)).
+			//nolint:gosec // there will never be an overflow
 			Buckets(uint32(16 * runtime.GOMAXPROCS(0))),
 	)
 	c.client = client

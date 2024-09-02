@@ -86,6 +86,10 @@ func newOtter(capacity int) {
 	}
 	for _, key := range keys {
 		cache.Set(key, key)
+		for i := 0; i < 10; i++ {
+			cache.Get(key)
+		}
+		time.Sleep(5 * time.Microsecond)
 	}
 }
 
@@ -101,6 +105,10 @@ func newRistretto(capacity int) {
 	}
 	for _, key := range keys {
 		cache.SetWithTTL(key, key, 1, time.Hour)
+		for i := 0; i < 10; i++ {
+			cache.Get(key)
+		}
+		time.Sleep(5 * time.Microsecond)
 	}
 }
 
@@ -111,6 +119,10 @@ func newTheine(capacity int) {
 	}
 	for _, key := range keys {
 		cache.SetWithTTL(key, key, 1, time.Hour)
+		for i := 0; i < 10; i++ {
+			cache.Get(key)
+		}
+		time.Sleep(5 * time.Microsecond)
 	}
 }
 
@@ -118,6 +130,10 @@ func newCcache(capacity int) {
 	cache := ccache.New(ccache.Configure[string]().MaxSize(int64(capacity)))
 	for _, key := range keys {
 		cache.Set(key, key, time.Hour)
+		for i := 0; i < 10; i++ {
+			cache.Get(key)
+		}
+		time.Sleep(5 * time.Microsecond)
 	}
 }
 
@@ -127,6 +143,12 @@ func newGcache(capacity int) {
 		if err := cache.Set(key, key); err != nil {
 			panic(err)
 		}
+		for i := 0; i < 10; i++ {
+			if _, err := cache.Get(key); err != nil {
+				panic(err)
+			}
+		}
+		time.Sleep(5 * time.Microsecond)
 	}
 }
 
@@ -138,6 +160,10 @@ func newTTLCache(capacity int) {
 	go cache.Start()
 	for _, key := range keys {
 		cache.Set(key, key, ttlcache.DefaultTTL)
+		for i := 0; i < 10; i++ {
+			cache.Get(key)
+		}
+		time.Sleep(5 * time.Microsecond)
 	}
 }
 
@@ -145,5 +171,9 @@ func newHashicorp(capacity int) {
 	cache := hashicorp.NewLRU[string, string](capacity, nil, time.Hour)
 	for _, key := range keys {
 		cache.Add(key, key)
+		for i := 0; i < 10; i++ {
+			cache.Get(key)
+		}
+		time.Sleep(5 * time.Microsecond)
 	}
 }

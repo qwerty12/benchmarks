@@ -6,7 +6,7 @@ require (
 	github.com/BurntSushi/toml v1.4.0
 	github.com/Yiling-J/theine-go v0.4.1
 	github.com/bluele/gcache v0.0.2
-	github.com/dgraph-io/ristretto v0.1.1
+	github.com/dgraph-io/ristretto v1.0.0
 	github.com/dgryski/go-clockpro v0.0.0-20140817124034-edc6d3eeb96e
 	github.com/dgryski/go-tinylfu v0.0.0-20230408121034-c8e5d79bbb04
 	github.com/go-echarts/go-echarts/v2 v2.4.1
@@ -34,7 +34,6 @@ require (
 	github.com/gobwas/httphead v0.1.0 // indirect
 	github.com/gobwas/pool v0.2.1 // indirect
 	github.com/gobwas/ws v1.4.0 // indirect
-	github.com/golang/glog v1.2.2 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.8 // indirect
 	github.com/magiconair/properties v1.8.0 // indirect
@@ -45,5 +44,5 @@ require (
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/zeebo/xxh3 v1.0.2 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
-	golang.org/x/sys v0.22.0 // indirect
+	golang.org/x/sys v0.25.0 // indirect
 )

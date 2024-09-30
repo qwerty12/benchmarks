@@ -16,7 +16,7 @@ require (
 	github.com/jellydator/ttlcache/v3 v3.3.0
 	github.com/karlseguin/ccache/v3 v3.0.5
 	github.com/klauspost/compress v1.17.10
-	github.com/maypok86/otter v1.2.2
+	github.com/maypok86/otter v1.2.3
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pingcap/go-ycsb v1.0.1
 	github.com/scalalang2/golang-fifo/v2 v2.0.0-20231212012136-274aca942e14

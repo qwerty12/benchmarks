@@ -15,7 +15,7 @@ require (
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/jellydator/ttlcache/v3 v3.3.0
 	github.com/karlseguin/ccache/v3 v3.0.6
-	github.com/klauspost/compress v1.17.10
+	github.com/klauspost/compress v1.17.11
 	github.com/maypok86/otter v1.2.3
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pingcap/go-ycsb v1.0.1

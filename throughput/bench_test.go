@@ -32,6 +32,7 @@ var (
 		&client.Gcache[string, string]{},
 		&client.TTLCache[string, string]{},
 		&client.GolangLRU[string, string]{},
+		&client.Elastic[string]{},
 	}
 )
 

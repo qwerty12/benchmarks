@@ -94,7 +94,7 @@ func newOtter(capacity int) {
 }
 
 func newRistretto(capacity int) {
-	cache, err := ristretto.NewCache(&ristretto.Config{
+	cache, err := ristretto.NewCache[string, string](&ristretto.Config[string, string]{
 		NumCounters:        10 * int64(capacity),
 		MaxCost:            int64(capacity),
 		BufferItems:        64,

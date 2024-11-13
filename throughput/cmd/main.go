@@ -46,7 +46,10 @@ func run(path, dir string) error {
 	}
 
 	workloadToCaches := make(map[string][]cacheInfo)
-	for _, line := range lines[3 : len(lines)-2] {
+	for _, line := range lines {
+		if !strings.Contains(line, "BenchmarkCache") {
+			continue
+		}
 		fields := strings.Fields(line)
 		opsPerSec, err := strconv.Atoi(fields[4])
 		if err != nil {

@@ -15,12 +15,14 @@ import (
 func fastrand() uint32
 
 var clients = []client.Client[int, struct{}]{
-	&client.Theine[int, struct{}]{},
+	/*&client.Theine[int, struct{}]{},
 	&client.Ristretto[int, struct{}]{},
 	&client.LRU[int, struct{}]{},
 	&client.ARC[int, struct{}]{},
-	&client.FIFO[int, struct{}]{},
+	&client.FIFO[int, struct{}]{},*/
 	&client.Otter[int, struct{}]{},
+	&client.Xsync[int, struct{}]{},
+	&client.Pb[int, struct{}]{},
 }
 
 type benchCase struct {

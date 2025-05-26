@@ -26,13 +26,16 @@ var (
 
 	clients = []client.Client[string, string]{
 		&client.Otter[string, string]{},
-		&client.Theine[string, string]{},
+		&client.Sturdyc[string]{},
+		&client.Xsync[string, string]{},
+		&client.Pb[string, string]{},
+		/*&client.Theine[string, string]{},
 		&client.Ristretto[string, string]{},
 		&client.Ccache[string]{},
 		&client.Gcache[string, string]{},
 		&client.TTLCache[string, string]{},
 		&client.GolangLRU[string, string]{},
-		&client.Elastic[string]{},
+		&client.Elastic[string]{},*/
 	}
 )
 

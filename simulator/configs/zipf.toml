@@ -3,10 +3,8 @@ name = "Zipf"
 capacities = [ 500, 1000, 2000, 5000, 10_000, 20_000, 40_000, 80_000 ]
 caches = [
     "otter",
-    "theine",
-    "ristretto",
-    "lru",
-    "arc"
+    "xsync",
+    "pb"
 ]
 limit = 1_000_000
 

@@ -3,10 +3,8 @@ name = "Twitter1"
 capacities = [ 250, 500, 750, 1000, 1250, 1500, 1750, 2000 ]
 caches = [
     "otter",
-    "theine",
-    "ristretto",
-    "lru",
-    "arc"
+    "xsync",
+    "pb"
 ]
 
 [file]

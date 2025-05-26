@@ -72,14 +72,14 @@ func main() {
 }
 
 func newOtter(capacity int) {
-	cache, err := otter.MustBuilder[string, string](capacity).
+	cache, err := otter.MustBuilder[string, struct{}](capacity).
 		WithTTL(time.Hour).
 		Build()
 	if err != nil {
 		log.Fatal(err)
 	}
 	for _, key := range keys {
-		cache.Set(key, key)
+		cache.Set(key, struct{}{})
 		for i := 0; i < 10; i++ {
 			cache.Get(key)
 		}
@@ -88,9 +88,9 @@ func newOtter(capacity int) {
 }
 
 func newSturdyc(capacity int) {
-	cache := sturdyc.New[string](capacity, 16, time.Hour, 10)
+	cache := sturdyc.New[struct{}](capacity, 16, time.Hour, 10)
 	for _, key := range keys {
-		cache.Set(key, key)
+		cache.Set(key, struct{}{})
 		for i := 0; i < 10; i++ {
 			cache.Get(key)
 		}
@@ -99,9 +99,9 @@ func newSturdyc(capacity int) {
 }
 
 func newXsync(capacity int) {
-	cache := xsync.NewMap[string, string](xsync.WithPresize(capacity))
+	cache := xsync.NewMap[string, struct{}](xsync.WithPresize(capacity))
 	for _, key := range keys {
-		cache.Store(key, key)
+		cache.Store(key, struct{}{})
 		for i := 0; i < 10; i++ {
 			cache.Load(key)
 		}
@@ -110,9 +110,9 @@ func newXsync(capacity int) {
 }
 
 func newPb(capacity int) {
-	cache := pb.NewMapOf[string, string](pb.WithShrinkEnabled(), pb.WithPresize(capacity))
+	cache := pb.NewMapOf[string, struct{}](pb.WithShrinkEnabled(), pb.WithPresize(capacity))
 	for _, key := range keys {
-		cache.Store(key, key)
+		cache.Store(key, struct{}{})
 		for i := 0; i < 10; i++ {
 			cache.Load(key)
 		}

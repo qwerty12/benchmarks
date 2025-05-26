@@ -20,12 +20,14 @@ import (
 func getClients() map[string]client.Client[uint64, uint64] {
 	cl := []client.Client[uint64, uint64]{
 		&client.Otter[uint64, uint64]{},
-		&client.Theine[uint64, uint64]{},
+		&client.Xsync[uint64, uint64]{},
+		&client.Pb[uint64, uint64]{},
+		/*&client.Theine[uint64, uint64]{},
 		&client.TinyLFU{},
 		&client.ClockPro{},
 		&client.Ristretto[uint64, uint64]{},
 		&client.LRU[uint64, uint64]{},
-		&client.ARC[uint64, uint64]{},
+		&client.ARC[uint64, uint64]{},*/
 	}
 
 	clients := make(map[string]client.Client[uint64, uint64], len(cl))
